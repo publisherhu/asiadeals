@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-88HKRVYB4R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-88HKRVYB4R");
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6932374470687759"
+       crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b7a3b">
+  <meta name="description" content="দেশ নির্বাচন করে প্রযোজ্য অফার দেখুন">
+  <link rel="manifest" href="manifest.json">
+  <title>বিশেষ অফার</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:#f3f7f4;color:#153322}
+    .wrap{max-width:560px;margin:auto;padding:16px}
+    .card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.10)}
+    .banner{width:100%;display:block;max-height:280px;object-fit:cover}
+    .content{padding:22px}
+    h1{margin:0 0 8px;text-align:center;font-size:25px}
+    .sub{text-align:center;color:#557064;margin:0 0 20px;line-height:1.55}
+    .btn{display:block;text-decoration:none;color:#fff;background:#0b7a3b;margin:12px 0;padding:15px 18px;border-radius:13px;text-align:center;font-weight:700;font-size:17px}
+    .btn:active{transform:scale(.99)}
+    .track{font-size:12px;text-align:center;color:#68786f;margin-top:12px}
+    .notice{font-size:12px;line-height:1.55;color:#6b5140;background:#fff8ef;border-radius:12px;padding:12px;margin-top:18px}
+    #fbStatus{font-size:12px;text-align:center;color:#28734a;margin-top:8px;min-height:18px}
+    footer{text-align:center;color:#718078;font-size:11px;padding:15px 4px}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <img class="banner" src="banner.jpg" alt="Offer banner" onerror="this.style.display='none'">
+    <div class="content">
+      <h1>🎁 বিশেষ অফার দেখতে আপনার দেশ নির্বাচন করুন</h1>
+      <p class="sub">আপনার দেশের জন্য প্রযোজ্য অফার ও শর্ত দেখতে নিচের অপশনটি নির্বাচন করুন।</p>
+
+      <a class="btn" id="myBtn" href="https://go.iltr.xyz/click?pid=24359&offer_id=5598&l=1789563970">🇲🇾 Malaysia — অফার দেখুন</a>
+      <a class="btn" id="sgBtn" href="https://go.iltr.xyz/click?pid=24359&offer_id=5598&l=1789563971">🇸🇬 Singapore — অফার দেখুন</a>
+      <a class="btn" id="bdBtn" href="https://go.iltr.xyz/click?pid=24359&offer_id=5598&l=1789563972">🇧🇩 Bangladesh — অফার দেখুন</a>
+
+      
+      
+
+      <div class="notice">
+        🔞 18+ | প্রযোজ্য শর্ত ও নিয়ম প্রযোজ্য। অংশগ্রহণের আগে অফারের সম্পূর্ণ শর্ত পড়ুন।
+        জুয়া আর্থিক ঝুঁকিপূর্ণ হতে পারে।
+      </div>
+    </div>
+  </div>
+  <footer>তথ্য ও অফারের শর্ত সংশ্লিষ্ট অফার পেজে যাচাই করুন।</footer>
+</div>
+
+<script>
+  // Transparent Facebook referrer indication only; no spoofing or referrer manipulation.
+  const ref=document.referrer||"";
+  if(/(^|\.)facebook\.com$|(^|\.)fb\.com$|(^|\.)m\.facebook\.com$|(^|\.)l\.facebook\.com$/i.test(new URL(ref || location.href).hostname)){
+    document.getElementById("fbStatus").textContent="Facebook থেকে আসা ভিজিটর";
+  }
+
+  const params=new URLSearchParams(location.search);
+  const source=params.get("utm_source");
+  const medium=params.get("utm_medium");
+  const campaign=params.get("utm_campaign");
+
+  function track(name, params={}){
+    if(typeof window.gtag==="function"){
+      window.gtag("event",name,params);
+    }
+  }
+
+  track("landing_view",{
+    utm_source:source||"(none)",
+    utm_medium:medium||"(none)",
+    utm_campaign:campaign||"(none)"
+  });
+
+  [
+    ["myBtn","Malaysia"],
+    ["sgBtn","Singapore"],
+    ["bdBtn","Bangladesh"]
+  ].forEach(([id,country])=>{
+    document.getElementById(id).addEventListener("click",(e)=>{
+      const link=e.currentTarget;
+      if(typeof window.gtag!=="function") return;
+      e.preventDefault();
+      window.gtag("event","offer_click",{
+        country:country,
+        utm_source:source||"(none)",
+        utm_medium:medium||"(none)",
+        utm_campaign:campaign||"(none)",
+        transport_type:"beacon",
+        event_callback:()=>{ window.location.href=link.href; },
+        event_timeout:800
+      });
+    });
+  });
+
+  if("serviceWorker" in navigator){
+    navigator.serviceWorker.register("sw.js").catch(()=>{});
+  }
+</script>
+</body>
+</html>
